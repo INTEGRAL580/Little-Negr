@@ -296,6 +296,7 @@ stream_1/stream = ExtResource("14_8jlrb")
 stream_1/weight = 1.0
 
 [node name="Menu" type="Node2D"]
+scale = Vector2(0.63, 0.6)
 script = ExtResource("1_okm5b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
