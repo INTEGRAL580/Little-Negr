@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://buioxighlqx0x"]
+
+[ext_resource type="Script" path="res://settings/settings.gd" id="1_4fg51"]
+[ext_resource type="AudioStream" uid="uid://b5c8yh0veo6xr" path="res://Mus/Little Night song faster.mp3" id="2_p1ovn"]
+[ext_resource type="AudioStream" uid="uid://bqbfrlp3u2aso" path="res://Mus/Little Night song normal.mp3" id="3_crng3"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4ekr2"]
+streams_count = 2
+stream_0/stream = ExtResource("2_p1ovn")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("3_crng3")
+stream_1/weight = 1.0
+
+[node name="settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4fg51")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="volume_Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "volume"
+
+[node name="volume" type="HSlider" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="mute_volume" type="CheckBox" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "mute"
+
+[node name="resolution_Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "resolution
+"
+
+[node name="resolution" type="OptionButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+item_count = 4
+selected = 0
+popup/item_0/text = "1920x1080"
+popup/item_0/id = 0
+popup/item_1/text = "1600x900"
+popup/item_1/id = 1
+popup/item_2/text = "1280x720"
+popup/item_2/id = 0
+popup/item_3/text = "1152x648"
+popup/item_3/id = 3
+
+[node name="exit" type="Button" parent="."]
+layout_mode = 0
+offset_top = 578.0
+offset_right = 144.0
+offset_bottom = 647.0
+text = "exit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_4ekr2")
+autoplay = true
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/volume" to="." method="_on_volume_value_changed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/mute_volume" to="." method="_on_mute_volume_toggled"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/resolution" to="." method="_on_resolution_item_selected"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

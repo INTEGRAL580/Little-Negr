@@ -326,7 +326,7 @@ offset_top = 1.0
 offset_right = 43.0
 offset_bottom = 41.0002
 
-[node name="Button" type="Button" parent="menu"]
+[node name="play" type="Button" parent="menu"]
 layout_mode = 0
 offset_left = 115.0
 offset_top = 162.0
@@ -338,7 +338,7 @@ theme_override_fonts/font = ExtResource("12_1ddgx")
 theme_override_font_sizes/font_size = 100
 text = "P l a y"
 
-[node name="Button3" type="Button" parent="menu"]
+[node name="option" type="Button" parent="menu"]
 layout_mode = 0
 offset_left = 76.0
 offset_top = 405.0
@@ -350,7 +350,7 @@ theme_override_fonts/font = ExtResource("12_1ddgx")
 theme_override_font_sizes/font_size = 100
 text = "O p t i o n"
 
-[node name="Button2" type="Button" parent="menu"]
+[node name="quit" type="Button" parent="menu"]
 layout_mode = 0
 offset_left = 152.0
 offset_top = 650.0
@@ -461,5 +461,6 @@ texture = ExtResource("17_1avjv")
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_0an6w")
 
-[connection signal="pressed" from="menu/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="menu/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="menu/play" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="menu/option" to="." method="_on_option_pressed"]
+[connection signal="pressed" from="menu/quit" to="." method="_on_button_2_pressed"]
